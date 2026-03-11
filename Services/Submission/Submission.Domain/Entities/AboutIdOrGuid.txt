@@ -1,0 +1,30 @@
+﻿So let's start with an ID we have two choices here.
+
+Either we use an integer or we use a GUID.
+
+There are pros and cons for each of these two approaches.
+Mainly, the easiest part with the integer is that they are really readable and 
+is going to make our readability much better.
+Also, the database can generate the id for us so we don't have to bother with this.
+
+The only problem is when we are inserting multiple objects into the database,
+we need to do intermediate saves in order to force the database to generate the IDs.
+And then we have to group all those saves into a single transaction.
+
+That's something that we have to manage if we choose to use integers for our IDs.
+
+
+
+The other option is to use GUIDs.
+
+The advantage of GUIDs is that you can generate the GUID outside the database,
+and then you don't have to bother with the transactions and intermediate savings.
+
+But the GUIDs are quite ugly to read and it's going to decrease our project's
+readability. For instance our URL readability.
+
+
+
+As a rule of thumb, the best approach is to use integers for internal IDs and Guido's
+for external IDs. Since this is going to be an internal ID for the article ID,
+we're going to use integer.
