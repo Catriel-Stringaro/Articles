@@ -13,4 +13,5 @@ public partial class Article : Entity
 
     public int JournalId { get; set; }
     public required Journal Journal { get; set; }
+    public List<ArticleActor> Actors { get; set; } = new();
 }
