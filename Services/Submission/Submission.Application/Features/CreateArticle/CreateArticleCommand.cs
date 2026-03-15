@@ -1,13 +1,21 @@
 ﻿using Articles.Abstractions;
 using Articles.Abstractions.Enums;
+using Blocks.Domain;
 using FluentValidation;
 using MediatR;
+using System.Text.Json.Serialization;
 
 namespace Submission.Application.Features.CreateArticle
 {
-    public record CreateArticleCommand(int JournalId, string Title, string Scope, ArticleType ArticleType) : IRequest<IdResponse>
+    public record CreateArticleCommand(int JournalId, string Title, string Scope, ArticleType ArticleType) 
+        : ArticleCommand
     {
+        [JsonIgnore]
+        public DateTime CreatedOn => DateTime.UtcNow;
+        [JsonIgnore]
+        public int CreatedById { get; set; }
 
+        public override ArticleActionType ActionType => ArticleActionType.CreateArticle;
     }
 
     public class CreateArticleCommandValidator : AbstractValidator<CreateArticleCommand>

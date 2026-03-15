@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Exceptions", "Buildi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Core", "BuildingBlocks\Blocks.Core\Blocks.Core.csproj", "{44E53F12-0C3E-4F12-ADE4-C864DD6CEC07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Articles.Security", "BuildingBlocks\Articles.Security\Articles.Security.csproj", "{24E37947-3201-4992-9828-AFD2C5C79441}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{44E53F12-0C3E-4F12-ADE4-C864DD6CEC07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44E53F12-0C3E-4F12-ADE4-C864DD6CEC07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44E53F12-0C3E-4F12-ADE4-C864DD6CEC07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24E37947-3201-4992-9828-AFD2C5C79441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24E37947-3201-4992-9828-AFD2C5C79441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24E37947-3201-4992-9828-AFD2C5C79441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24E37947-3201-4992-9828-AFD2C5C79441}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +97,7 @@ Global
 		{65531A0B-4429-4B05-9E9B-83AD4FF9C849} = {E87AF441-A8F1-4A01-ADDB-5734712DDE0C}
 		{6C410A43-FC23-4CF1-AE22-11EBC1DE7524} = {E87AF441-A8F1-4A01-ADDB-5734712DDE0C}
 		{44E53F12-0C3E-4F12-ADE4-C864DD6CEC07} = {E87AF441-A8F1-4A01-ADDB-5734712DDE0C}
+		{24E37947-3201-4992-9828-AFD2C5C79441} = {E87AF441-A8F1-4A01-ADDB-5734712DDE0C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E49BB0D9-578F-405D-ABD9-3CCA8055BE68}

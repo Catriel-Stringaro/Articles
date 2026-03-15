@@ -3,6 +3,7 @@ using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Submission.Application.Features.CreateArticle;
+using Submission.Domain.Behaviors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,10 @@ public static class DependencyInjection
             .AddMediatR(config =>
         {
             config.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
-            config.AddOpenBehavior(typeof(ValidationBehavior<,>));
+            //optimise like 
+            config.AddOpenBehavior(typeof(ValidationBehavior<,>)); // validate firts
+            config.AddOpenBehavior(typeof(SetUserIdBehavior<,>)); // then set the id
+            // so if the command os not valid we don't need to execute setUserIdbehavior
         });
         return services;
     }
