@@ -11,7 +11,7 @@ public partial class Article
         var role = isCorrespondingAuthor ? UserRoleType.CORAUT : UserRoleType.AUT;
 
         if (Actors.Exists(x => x.PersonId == author.Id && x.Role == role))
-            throw new DomainException($"Author {author.EmailAddresse} is already assigned to the article");
+            throw new DomainException($"Author {author.EmailAddress} is already assigned to the article");
 
         Actors.Add(new ArticleAuthor()
         {

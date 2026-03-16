@@ -14,7 +14,7 @@ public class Person : Entity
     public required string LastName { get; init; }
     public string FullName => FirstName + " " + LastName;
     public string? Title { get; init; }
-    public required EmailAddress EmailAddresse { get; init; }
+    public required EmailAddress EmailAddress { get; init; }
     public required string Affiliation { get; init; }
 
     public int? UserId { get; init; }
