@@ -1,4 +1,5 @@
-﻿namespace Submission.API
+﻿using FileStorage.MongoGridFS;
+namespace Submission.API
 {
     public static class DependencyInjection
     {
@@ -8,7 +9,8 @@
                 .AddMemoryCache()
                 .AddEndpointsApiExplorer()
                 .AddSwaggerGen();
-        
+
+            services.AddMongoFileStorage(configuration);
             return services;
         }
     }

@@ -2,6 +2,7 @@
 using Articles.Abstractions.Enums;
 using Articles.Security;
 using MediatR;
+using Submission.Application.Features.AssignAuthor;
 
 namespace Submission.API.Endpoints;
 

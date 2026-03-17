@@ -13,5 +13,8 @@ public partial class Article : Entity
 
     public int JournalId { get; set; }
     public required Journal Journal { get; set; }
-    public List<ArticleActor> Actors { get; set; } = new();
+
+    public readonly List<Asset> _assets = new();
+    public IReadOnlyList<Asset> Assets => _assets.AsReadOnly();
+    public List<ArticleActor> Actors { get; init; } = new();
 }
