@@ -8,7 +8,7 @@ namespace Submission.API.Enpoints
             CreateArticleEndpoint.Map(app);
             AssignAuthorEndpoint.Map(app);
             CreateAndAssignAuthorEndpoint.Map(app);
-
+            UploadManuscriptFileEndpoint.Map(app);
             return app;
         }
     }

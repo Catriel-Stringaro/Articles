@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Articles.Abstractions.Enums;
+using Blocks.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Submission.Domain.Entities;
 using Submission.Persistance.Repositories;
 using System;
 using System.Collections.Generic;
@@ -22,7 +25,7 @@ public static class DependencyInjection
 
         services.AddScoped(typeof(Repository<>)); // we need the repositoy from the submission not from blocks, cuz we create this repository specificly for submition, and only acepts 1 parameter, not 2 like the other one.
         services.AddScoped(typeof(ArticleRepository));
-
+        services.AddScoped<CachedRepository<SubmissionDbContext, AssetTypeDefinition, AssetType>>();
         return services;
     }
 }

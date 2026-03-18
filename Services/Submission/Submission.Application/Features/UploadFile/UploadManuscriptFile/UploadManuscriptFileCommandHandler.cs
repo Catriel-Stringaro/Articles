@@ -1,5 +1,6 @@
 ﻿using Blocks.EntityFramework;
 using Blocks.EntityFrameworkCore;
+using FileStorage.Contracts;
 using Submission.Persistance;
 
 namespace Submission.Application.Features.UploadFile.UploadManuscriptFile;
@@ -11,7 +12,7 @@ namespace Submission.Application.Features.UploadFile.UploadManuscriptFile;
 // in this case is better global alias cuz we don't need an extra implementation.
 
 
-public class UploadManuscriptFileCommandHandler(ArticleRepository _articleRepository, AssetTypeDefinitionRepository _assetTypeRepository) 
+public class UploadManuscriptFileCommandHandler(ArticleRepository _articleRepository, AssetTypeDefinitionRepository _assetTypeRepository, IFileService _fileService) 
     : IRequestHandler<UploadManuscriptFileCommand, IdResponse>
 {
     public async Task<IdResponse> Handle(UploadManuscriptFileCommand command, CancellationToken ct)
@@ -30,14 +31,14 @@ public class UploadManuscriptFileCommandHandler(ArticleRepository _articleReposi
 
 
         var filePath = asset.GenerateStorageFilePath(command.File.FileName);
-        //var uploadResponse = await _fileService.UploadFileAsync(
-        //    filePath,
-        //    command.File,
-        //    overwrite: true,
-        //    tags: new Dictionary<string, string>{
-        //            {"entity", nameof(Asset)},
-        //            {"entityId", asset.Id.ToString()}
-        //    });
+        var uploadResponse = await _fileService.UploadFileAsync(
+            filePath,
+            command.File,
+            overwrite: true,
+            tags: new Dictionary<string, string>{
+                    {"entity", nameof(asset)},
+                    {"entityid", asset.Id.ToString()}
+            });
 
         try
         {
