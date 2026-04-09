@@ -10,10 +10,6 @@ namespace Submission.Application.Features.CreateArticle
     public record CreateArticleCommand(int JournalId, string Title, string Scope, ArticleType ArticleType) 
         : ArticleCommand
     {
-        [JsonIgnore]
-        public DateTime CreatedOn => DateTime.UtcNow;
-        [JsonIgnore]
-        public int CreatedById { get; set; }
 
         public override ArticleActionType ActionType => ArticleActionType.CreateArticle;
     }
