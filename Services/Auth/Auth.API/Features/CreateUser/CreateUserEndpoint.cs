@@ -1,10 +1,11 @@
 ﻿
 using Articles.Security;
 using Auth.API.Features.CreateUser;
+using Auth.Domain.Users;
+using Auth.Domain.Users.Events;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-
 namespace Auth.API.Features.Users.CreateUser;
 
 //[Authorize(Roles = Role.USERADMIN)]
@@ -55,10 +56,20 @@ namespace Auth.API.Features.Users.CreateUser;
 [Authorize(Roles = Role.USERADMIN)]
 [HttpPost("users")]
 [Tags("Users")]
-public class CreateUserEndpoint : Endpoint<CreateUserEndpoint, CreateUserResponse>
+public class CreateUserEndpoint(UserManager<User> _userManager) : Endpoint<CreateUserCommand, CreateUserResponse>
 {
-    public override async Task HandleAsync(CreateUserEndpoint req, CancellationToken ct)
+    public override async Task HandleAsync(CreateUserCommand command, CancellationToken ct)
     {
 
+        var person = await _userManager.FindByEmailAsync(command.Email);
+        if (person?.User != null)
+            throw new BadRequestException($"User with email {command.Email} already exists");
+
+        var user = Domain.Users.User.Create(command);
+        var ressetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+        var result = await _userManager.CreateAsync(user);
+
+        // before exit our handler we should dispatch all our events
+        await PublishAsync(new UserCreated(user, ressetPasswordToken));
     }
 }

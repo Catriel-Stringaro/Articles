@@ -1,15 +1,16 @@
 ﻿using Articles.Abstractions.Enums;
+using Auth.Domain.Users;
 
 namespace Auth.API.Features.CreateUser
 {
-    public class CreateUserCommand
+    public class CreateUserCommand : IUserUserCreationInfo
     {
         public required string Email { get; init; }
         public required string FirstName { get; init; }
         public required string LastName { get; init; }
-        //public required Gender Gender { get; init; }
+        public required Gender Gender { get; init; }
 
-        //public Honorific? Honorific { get; init; }
+        public Honorific? Honorific { get; init; }
 
         public string? PhoneNumber { get; init; }
         public string? PictureUrl { get; init; }
@@ -19,7 +20,7 @@ namespace Auth.API.Features.CreateUser
 
         public required IReadOnlyList<UserRoleDto> UserRoles { get; init; } = new List<UserRoleDto>();
 
-        //IReadOnlyList<IUserRole> IUserUserCreationInfo.UserRoles => UserRoles;
+        IReadOnlyList<IUserRole> IUserUserCreationInfo.UserRoles => UserRoles;
     }
 
     public record UserRoleDto(

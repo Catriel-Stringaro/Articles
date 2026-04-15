@@ -48,6 +48,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Domain", "services\Auth\Auth.Domain\Auth.Domain.csproj", "{1FC56F92-BEE6-469C-96E5-460998B5E315}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Persistence", "services\Auth\Auth.Persistence\Auth.Persistence.csproj", "{FBE2AB70-A326-49B4-94CF-A33567F8056F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1FC56F92-BEE6-469C-96E5-460998B5E315} = {1FC56F92-BEE6-469C-96E5-460998B5E315}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
