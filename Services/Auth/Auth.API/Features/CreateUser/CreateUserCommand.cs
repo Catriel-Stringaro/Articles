@@ -27,7 +27,7 @@ namespace Auth.API.Features.CreateUser
         UserRoleType RoleType,
         DateTime? StartDate,
         DateTime? ExpiringDate
-    );//: IUserRole;
+    ): IUserRole;
 
     public record CreateUserResponse(
         string Email,
